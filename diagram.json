@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Guilherme Viana",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 45, "left": 60.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 48, "left": -129.56, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -32.4,
+      "left": 138.2,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 327.9, "left": 53.5, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 137.8,
+      "left": 133.55,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "ultrasonic1:GND", "bb1:tn.10", "black", [ "h37.2", "v-86.4", "h-1.6" ] ],
+    [ "esp:5V", "ultrasonic1:VCC", "red", [ "h0.15", "v172.8" ] ],
+    [ "led1:A", "bb1:tn.7", "black", [ "v0" ] ],
+    [ "led1:C", "bb1:9t.a", "red", [ "v0" ] ],
+    [ "r1:1", "bb1:9b.g", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:9t.c", "", [ "$bb" ] ],
+    [ "esp:27", "ultrasonic1:ECHO", "gold", [ "h-67.05", "v297.6", "h336.8" ] ],
+    [ "esp:26", "bb1:9b.j", "red", [ "h-76.65", "v-144", "h211.2", "v182.4" ] ],
+    [ "esp:25", "ultrasonic1:TRIG", "green", [ "h-47.85", "v297.6", "h307.6" ] ]
+  ],
+  "dependencies": {}
+}
